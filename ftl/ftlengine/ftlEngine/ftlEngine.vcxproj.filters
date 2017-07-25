@@ -18,12 +18,21 @@
     <ClCompile Include="vector3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mtx44.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DebugUtil.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ftl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vector3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mtx44.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

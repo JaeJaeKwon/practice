@@ -134,11 +134,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="mtx44.cpp" />
     <ClCompile Include="vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DebugUtil.hpp" />
     <ClInclude Include="ftl.hpp" />
+    <ClInclude Include="mtx44.hpp" />
+    <ClInclude Include="vector3.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
