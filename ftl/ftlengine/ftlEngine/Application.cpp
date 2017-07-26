@@ -1,6 +1,7 @@
 #include "Application.hpp"
 #include "DebugUtil.hpp"
 #include "Engine.hpp"
+#include "Input.hpp"
 /*
 namespace SWE {
 				Application* APP = nullptr;
@@ -12,7 +13,7 @@ SWE::Application::Application() : screenWidth(800),
 																																		pWindow(nullptr)
 {
 	//			DEBUG_ASSERT(APP != nullptr, "No more than 1 instance of Application");
-				//APP = this;
+			/*	//APP = this;
 				if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 								DEBUG_PRINT("SDL couldn't initialize! SD_Error: %s\n", SDL_GetError());
 				}
@@ -29,6 +30,7 @@ SWE::Application::Application() : screenWidth(800),
 
 				if (!pWindow) {
 								DEBUG_ASSERT(pWindow == nullptr, "window is failed!");
+								*/
 				
 }
 
@@ -41,7 +43,6 @@ SWE::Application::~Application()
 
 void SWE::Application::Initialize()
 {
-
 				if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 								DEBUG_PRINT("SDL couldn't initialize! SD_Error: %s\n", SDL_GetError());
 				}
@@ -63,8 +64,21 @@ void SWE::Application::Initialize()
 
 void SWE::Application::Update(float /*dt*/)
 {
+				Input::Reset();
 				//Todo: PollEvents
 				PollEvents();
+
+				if (Input::IsAnyPressed()) {
+								printf("AnyPressed\n");
+				}
+				if (Input::IsAnyTriggered()) {
+								printf("AnyTriggered\n");
+				}
+				if (Input::IsAnyReleased()) {
+								printf("AnyReleased\n");
+				}
+
+
 }
 
 
@@ -72,7 +86,7 @@ void SWE::Application::PollEvents()
 {
 				while (SDL_PollEvent(&event)) {
 								PollWindowEvent(event);
-								//PollKey
+								PollKeyboardEvent(event);
 								//PollMouse
 				}
 }
@@ -88,11 +102,26 @@ void SWE::Application::PollWindowEvent(SDL_Event & currEvent)
 				}
 }
 
-/*void SWE::Application::PollKeyboardEvent(SDL_Event & currEvent)
+void SWE::Application::PollKeyboardEvent(SDL_Event & currEvent)
 {
+				switch (currEvent.type) {
+				case SDL_KEYDOWN: {
+
+								Input::SetKeyPressed(currEvent.key.keysym.scancode, SDL_KEYDOWN);
+
+				}break;
+				case SDL_KEYUP: {
+
+								Input::SetKeyPressed(currEvent.key.keysym.scancode, SDL_KEYUP);
+
+				}break;
+
+				default:
+								break;
+				}
 }
 
-void SWE::Application::PollMouseEvent(SDL_Event & currEvent)
+/*void SWE::Application::PollMouseEvent(SDL_Event & currEvent)
 {
 }
 */

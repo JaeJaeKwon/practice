@@ -2,6 +2,9 @@
 
 #ifdef _DEBUG
 #define _CRTDBG_MAP_ALLOC
+#ifdef _malloca
+#undef _malloca
+#endif
 #include <stdlib.h>
 #include <crtdbg.h>
 #include <cassert>
@@ -21,8 +24,8 @@ freopen_s(&pFile, "CONOUT$", "w", stderr);
 fclose(pFile);\
 FreeConsole();
 
-#define DEBUG_ASSERT(condition, expression) assert(!(condition) && (expression));
-#define DEBUG_PRINT(format, ...) do{fprintf(stdout, "%s:%d:%s(): "format, __FILE__,__LINE__,__func__,__VA_ARGS__);}while(0)
+#define DEBUG_ASSERT(condition, expression) assert(!(condition) && (#expression));
+#define DEBUG_PRINT(format, ...) do{fprintf(stdout, "%s:%d:%s(): "#format, __FILE__,__LINE__,__func__,__VA_ARGS__);}while(0)
 #else
 #define DEBUG_MEMORY_LECHECKS() 
 #define DEBUG_CREATE_CONSOLE() 

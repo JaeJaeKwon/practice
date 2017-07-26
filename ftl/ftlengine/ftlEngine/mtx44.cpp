@@ -1,5 +1,6 @@
 #include "mtx44.hpp"
 #include <iostream>
+#include <memory>
 //C++ Additions
 
 /*! A 4D Matrix for a 2D game, z is used for Z-order.  This matrix uses row
@@ -14,7 +15,7 @@ matrix.
 */
 Mtx44::Mtx44(void)
 {
-	MakeZero();
+	MakeIdentity();
 }
 Mtx44::Mtx44(const Mtx44& rhs)
 {
@@ -24,32 +25,16 @@ Mtx44::Mtx44(const Mtx44& rhs)
 //Sets all of the matrix values to 0
 void Mtx44::MakeZero(void)
 {
-	for (int i = 0; i < HB_ROWS; ++i)
-	{
-		for (int j = 0; j < HB_COLS; ++j)
-		{
-			m[i][j] = 0;
-		}
-	}
+				std::memset(m, 0, sizeof(m));
 }
 //Sets the matrix to the Identity Matrix
 void Mtx44::MakeIdentity(void)
 {
-	for (int i = 0; i < HB_ROWS; ++i)
-	{
-		for (int j = 0; j < HB_COLS; ++j)
-		{
-			if (i == j)
-			{
-				m[i][j] = 1;
-			}
-			else
-			{
-				m[i][j] = 0;
-			}
-			
-		}
-	}
+				MakeZero();
+				m[0][0] = 1;
+				m[1][1] = 1;
+				m[2][2] = 1;
+				m[3][3] = 1;
 }
 //Sets this matrix to a tranlsation matrix with the given values
 void Mtx44::MakeTranslate(float x, float y, float zOrder)

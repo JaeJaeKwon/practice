@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="mtx44.cpp" />
     <ClCompile Include="vector3.cpp" />
   </ItemGroup>
@@ -148,8 +149,10 @@
     <ClInclude Include="DebugUtil.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="ftl.hpp" />
+    <ClInclude Include="Input.hpp" />
     <ClInclude Include="mtx44.hpp" />
     <ClInclude Include="System.hpp" />
+    <ClInclude Include="Timer.hpp" />
     <ClInclude Include="vector3.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

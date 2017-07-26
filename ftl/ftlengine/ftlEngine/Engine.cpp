@@ -1,5 +1,8 @@
 #include "Engine.hpp"
 #include "Application.hpp"
+#include "Timer.hpp"
+#include "Input.hpp"
+#include <iostream>
 
 namespace SWE {
 
@@ -17,10 +20,13 @@ SWE::Engine::~Engine()
 
 void SWE::Engine::GameLoop()
 {
+				Input::Initialize();
 				//Initialize Timer
+				Timer::Initialize();
 
 				while (GameIsRunning) {
 								//Update the dt
+								dt = Timer::GetDelta();
 
 								//Update all systems
 								for (auto & sys: SystemsList) {
