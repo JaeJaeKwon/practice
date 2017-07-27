@@ -32,3 +32,11 @@ ftl/.vs/
 ftl/temp/
 *.ilk
 *.pdb
+ftl/external/googletest/lib/x64/googletest.lib
+ftl/external/glew/lib/x86/glew32s.lib
+ftl/external/glew/lib/x64/glew32s.lib
+ftl/output/ftlgame/Debug_x64/glew32.dll
+ftl/output/ftlgame/Debug_x64/SDL2.dll
+ftl/external/ftl/lib/x64/ftlEngine.lib
+ftl/external/SDL2/lib/x86/SDL2test.lib
+ftl/external/SDL2/lib/x64/SDL2test.lib

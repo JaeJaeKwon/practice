@@ -29,6 +29,7 @@ namespace SWE {
 
 
 								GLuint program;
+								GLuint VAO;
 
 				};
 
