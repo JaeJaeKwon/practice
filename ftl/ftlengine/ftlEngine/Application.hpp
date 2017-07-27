@@ -23,6 +23,7 @@ namespace SWE {
 
 								void Initialize() override;
 								void Update(float dt) override;
+								void SwapWindow();
 
 								//Todo: add other features
 								//Resolution size
@@ -40,10 +41,13 @@ namespace SWE {
 								void PollKeyboardEvent(SDL_Event& currEvent);
 								void PollMouseEvent(SDL_Event& currEvent);
 
+
 								int screenWidth;
 								int screenHeight;
 								SDL_Event event;					//Events frome the OS
 								SDL_Window* pWindow; //window data
+
+								SDL_GLContext glContext;
 				};
 
 //				extern Application* APP;

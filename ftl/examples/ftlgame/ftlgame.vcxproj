@@ -94,12 +94,13 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)ftlengine\ftlEngine\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PreBuildEvent>
-      <Command>copy /y /b "$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(TargetDir)"</Command>
+      <Command>copy /y /b "$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(TargetDir)"
+copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -111,12 +112,13 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)ftlengine\ftlEngine\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PreBuildEvent>
-      <Command>copy /y /b "$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(TargetDir)"</Command>
+      <Command>copy /y /b "$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(TargetDir)"
+copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -132,12 +134,13 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PreBuildEvent>
-      <Command>copy /y /b "$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(TargetDir)"</Command>
+      <Command>copy /y /b "$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(TargetDir)"
+copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,12 +156,13 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PreBuildEvent>
-      <Command>copy /y /b "$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(TargetDir)"</Command>
+      <Command>copy /y /b "$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(TargetDir)"
+copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

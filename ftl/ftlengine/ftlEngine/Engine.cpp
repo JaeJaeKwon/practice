@@ -2,6 +2,7 @@
 #include "Application.hpp"
 #include "Timer.hpp"
 #include "Input.hpp"
+#include "Graphics.hpp"
 #include <iostream>
 
 namespace SWE {
@@ -56,6 +57,7 @@ void SWE::Engine::Initialize()
 {
 				//Add systems to the engine
 				AddSystem(Application::instance());
+				AddSystem(Graphics::instance());
 
 				//Initialize systems after being added
 				for (auto & sys : SystemsList) {

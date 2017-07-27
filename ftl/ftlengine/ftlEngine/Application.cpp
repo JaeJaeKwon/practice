@@ -36,6 +36,8 @@ SWE::Application::Application() : screenWidth(800),
 
 SWE::Application::~Application()
 {
+				SDL_GL_DeleteContext(glContext);
+
 				SDL_DestroyWindow(pWindow);
 				pWindow = nullptr;
 				SDL_Quit();
@@ -53,13 +55,24 @@ void SWE::Application::Initialize()
 								SDL_WINDOWPOS_CENTERED,
 								screenWidth,
 								screenHeight,
-								SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
+								SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE|SDL_WINDOW_OPENGL
 				);
+				
+				SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+				SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
-
-				if (!pWindow) {
 								DEBUG_ASSERT(pWindow == nullptr, "window is failed!");
-				}
+
+							glContext =	SDL_GL_CreateContext(pWindow);
+							/*
+							check SDL_WINDOW_OPENGL or
+							Graphics Driver suppoert the minor or major GL version
+							Force GPU to use .exe file not on board Graphic!
+							*/
+								DEBUG_ASSERT(glContext == nullptr, "opengl is failed!");
+
 }
 
 void SWE::Application::Update(float /*dt*/)
@@ -119,6 +132,11 @@ void SWE::Application::PollKeyboardEvent(SDL_Event & currEvent)
 				default:
 								break;
 				}
+}
+
+void SWE::Application::SwapWindow()
+{
+				SDL_GL_SwapWindow(pWindow);
 }
 
 /*void SWE::Application::PollMouseEvent(SDL_Event & currEvent)

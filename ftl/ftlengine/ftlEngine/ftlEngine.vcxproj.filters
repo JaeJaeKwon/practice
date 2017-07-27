@@ -19,6 +19,9 @@
     <Filter Include="Timer">
       <UniqueIdentifier>{75fee8a3-af83-47c0-971d-9582df40f44f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{34826490-5fcb-436b-a78f-d37194bc327f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="vector3.cpp">
@@ -34,6 +37,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -64,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="Input.hpp">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.hpp">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
