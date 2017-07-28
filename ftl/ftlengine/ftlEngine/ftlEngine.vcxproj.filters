@@ -22,6 +22,15 @@
     <Filter Include="Graphics">
       <UniqueIdentifier>{34826490-5fcb-436b-a78f-d37194bc327f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{0ba24a7b-a5fd-4d4c-8ccf-4a698f4c8f94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic">
+      <UniqueIdentifier>{e37cae7c-5b2e-49ea-b84a-29fa2504437f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\Controller">
+      <UniqueIdentifier>{d6c57a49-57c8-44dc-a27f-2125c49d0b47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="vector3.cpp">
@@ -40,6 +49,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -73,6 +88,24 @@
     </ClInclude>
     <ClInclude Include="Graphics.hpp">
       <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.hpp">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.hpp">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentType.hpp">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogic.hpp">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.hpp">
+      <Filter>GameLogic\Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

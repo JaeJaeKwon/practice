@@ -81,7 +81,7 @@ void SWE::Application::Update(float /*dt*/)
 				//Todo: PollEvents
 				PollEvents();
 
-				if (Input::IsAnyPressed()) {
+		/*		if (Input::IsAnyPressed()) {
 								printf("AnyPressed\n");
 				}
 				if (Input::IsAnyTriggered()) {
@@ -90,7 +90,7 @@ void SWE::Application::Update(float /*dt*/)
 				if (Input::IsAnyReleased()) {
 								printf("AnyReleased\n");
 				}
-
+*/
 
 }
 
