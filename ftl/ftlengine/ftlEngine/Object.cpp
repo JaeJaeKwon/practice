@@ -12,6 +12,7 @@ Object::Object() : transform(nullptr), controller(nullptr)
 
 Object::~Object()
 {
+				Destroy();
 }
 
 void Object::Initialize()
@@ -28,6 +29,14 @@ void Object::Initialize()
 //Signal the object 
 void Object::Destroy()
 {
+				if (transform) {
+							delete	transform;
+							transform = nullptr;
+				}
+				if (controller) {
+								delete controller;
+								controller = nullptr;
+				}
 }
 
 bool Object::AddComponent(Component* pComponent)
