@@ -28,7 +28,7 @@ int main(int, char**) {
 				SWE::Engine* SWEngine = SWE::Engine::instance();
 
 				//Todo: Initialize the Engine and initialize all systems
-				SWEngine->Initialize();
+				//SWEngine->Initialize();
 
 
 				//Todo: Create initiail game state, main menu

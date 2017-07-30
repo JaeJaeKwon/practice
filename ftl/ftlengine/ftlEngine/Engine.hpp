@@ -27,11 +27,11 @@ namespace SWE {
 								//Update all systems
 								void GameLoop();
 								//Destroy all systems in the engine in reverse to avoid dependency issues
-								void DestroyAllSystems();
+								//void DestroyAllSystems();
 								//Add systems to the engine
 								void AddSystem(System* system);
 								//Initialize Engine
-								void Initialize();
+								//void Initialize();
 
 								void Quit();
 

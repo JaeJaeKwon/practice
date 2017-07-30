@@ -77,7 +77,7 @@ void SWE::Application::Initialize()
 
 void SWE::Application::Update(float /*dt*/)
 {
-				Input::Reset();
+				Input::instance()->Reset();
 				//Todo: PollEvents
 				PollEvents();
 
@@ -120,12 +120,12 @@ void SWE::Application::PollKeyboardEvent(SDL_Event & currEvent)
 				switch (currEvent.type) {
 				case SDL_KEYDOWN: {
 
-								Input::SetKeyPressed(currEvent.key.keysym.scancode, SDL_KEYDOWN);
+								Input::instance()->SetKeyPressed(currEvent.key.keysym.scancode, SDL_KEYDOWN);
 
 				}break;
 				case SDL_KEYUP: {
 
-								Input::SetKeyPressed(currEvent.key.keysym.scancode, SDL_KEYUP);
+								Input::instance()->SetKeyPressed(currEvent.key.keysym.scancode, SDL_KEYUP);
 
 				}break;
 

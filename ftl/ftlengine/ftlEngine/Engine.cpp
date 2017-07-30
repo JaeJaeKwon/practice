@@ -21,6 +21,20 @@ namespace SWE {
 SWE::Engine::Engine(bool /*debugMode_*/) : GameIsRunning(true)
 {
 				//ENGINE = this;
+		//Add systems to the engine
+				AddSystem(Application::instance());
+				AddSystem(GameLogic::instance());
+				AddSystem(Graphics::instance());
+				
+
+				//Initialize systems after being added
+				for (auto & sys : SystemsList) {
+								sys->Initialize();
+				}
+
+				Input::instance();
+				//Initialize Timer
+				Timer::instance();
 }
 
 SWE::Engine::~Engine()
@@ -29,9 +43,9 @@ SWE::Engine::~Engine()
 
 void SWE::Engine::GameLoop()
 {
-				Input::Initialize();
-				//Initialize Timer
-				Timer::instance();
+				//Input::instance();
+				////Initialize Timer
+				//Timer::instance();
 
 				Object* test = new Object();
 				test->AddComponent(new Transform());
@@ -53,14 +67,14 @@ void SWE::Engine::GameLoop()
 				//When Engine Shutsdown
 }
 
-void SWE::Engine::DestroyAllSystems()
-{
-				//Delete all systems (in reverse) that they were added in
-				//to minimize dependency problems between systems
-				//for (auto & sys : SystemsList) {
-				//				delete sys;
-				//}
-}
+//void SWE::Engine::DestroyAllSystems()
+//{
+//				//Delete all systems (in reverse) that they were added in
+//				//to minimize dependency problems between systems
+//				//for (auto & sys : SystemsList) {
+//				//				delete sys;
+//				//}
+//}
 
 void SWE::Engine::AddSystem(System* system)
 {
@@ -68,19 +82,19 @@ void SWE::Engine::AddSystem(System* system)
 				SystemsList.push_back(system);
 }
 
-void SWE::Engine::Initialize()
-{
-				//Add systems to the engine
-				AddSystem(Application::instance());
-				AddSystem(GameLogic::instance());
-				AddSystem(Graphics::instance());
-				
-
-				//Initialize systems after being added
-				for (auto & sys : SystemsList) {
-								sys->Initialize();
-				}
-}
+//void SWE::Engine::Initialize()
+//{
+//				//Add systems to the engine
+//				AddSystem(Application::instance());
+//				AddSystem(GameLogic::instance());
+//				AddSystem(Graphics::instance());
+//				
+//
+//				//Initialize systems after being added
+//				for (auto & sys : SystemsList) {
+//								sys->Initialize();
+//				}
+//}
 
 void SWE::Engine::Quit()
 {

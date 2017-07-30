@@ -24,7 +24,7 @@ namespace SWE {
 								float expTimer;
 								Vector3 pos;
 
-								Transform* transform;
+								Transform* pTransform;
 
 				};
 }

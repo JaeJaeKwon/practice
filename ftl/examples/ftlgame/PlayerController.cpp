@@ -19,37 +19,38 @@ PlayerController::~PlayerController()
 
 void PlayerController::Initialize()
 {
-				transform = static_cast<Transform*>(GetOwner()->GetComponent(CT_TRANSFORM));
+				pTransform = static_cast<Transform*>(GetOwner()->GetComponent(CT_TRANSFORM));
 }
 
 void PlayerController::Update(float dt)
 {
 				Movement();
 				Experience(dt);
-				if (Input::IsTriggered(SDL_SCANCODE_F)) {
+				if (Input::instance()->IsTriggered(SDL_SCANCODE_F)) {
 								--health;
 				}
-					transform->SetPosition(pos);
+					pTransform->SetPosition(pos);
 
-					std::cout << transform->GetPosition().x << " " <<
-									transform->GetPosition().y << " " <<
-									transform->GetPosition().z << "\n";
+					std::cout << pTransform->GetPosition().x << " " <<
+									pTransform->GetPosition().y << " " <<
+									pTransform->GetPosition().z << "\n";
 																		
 }
 
 void SWE::PlayerController::Movement()
 {
-			if (Input::IsPressed(SDL_SCANCODE_W)) {
+				Input* pInput = Input::instance();
+			if (pInput->IsPressed(SDL_SCANCODE_W)) {
 								++pos.y;
 				}
-				if (Input::IsPressed(SDL_SCANCODE_S)) {
+				if (pInput->IsPressed(SDL_SCANCODE_S)) {
 								--pos.y;
 				}
 
-if (Input::IsPressed(SDL_SCANCODE_D)) {
+if (pInput->IsPressed(SDL_SCANCODE_D)) {
 								++pos.x;
 				}
-				if (Input::IsPressed(SDL_SCANCODE_A)) {
+				if (pInput->IsPressed(SDL_SCANCODE_A)) {
 								--pos.x;
 				}
 

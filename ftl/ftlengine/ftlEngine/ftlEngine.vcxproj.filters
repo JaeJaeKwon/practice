@@ -1,111 +1,124 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{066fd97b-b378-4e87-a7f0-bc070e454cca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Timer">
-      <UniqueIdentifier>{75fee8a3-af83-47c0-971d-9582df40f44f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics">
-      <UniqueIdentifier>{34826490-5fcb-436b-a78f-d37194bc327f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{0ba24a7b-a5fd-4d4c-8ccf-4a698f4c8f94}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLogic">
+    <Filter Include="Util">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Core\Application">
+      <UniqueIdentifier>{8e2b649a-42b8-493b-8544-935a489682af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Engine">
+      <UniqueIdentifier>{ad8f5d09-8043-42cb-8ba8-d1b82e016af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\GameLogic">
+      <UniqueIdentifier>{7f45d80c-9083-4c5e-b4b5-565ce32bbf1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Graphics">
+      <UniqueIdentifier>{9d65ac1f-f535-454f-957e-61fef9af4887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
       <UniqueIdentifier>{e37cae7c-5b2e-49ea-b84a-29fa2504437f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLogic\Controller">
+    <Filter Include="Component\Controller">
       <UniqueIdentifier>{d6c57a49-57c8-44dc-a27f-2125c49d0b47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Transform">
+      <UniqueIdentifier>{4d35feb5-694e-4c7b-8f42-c1e0c15861f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\Math">
+      <UniqueIdentifier>{b78ffb77-cb80-4df3-8cff-6ab1472005a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\Math\Matrix">
+      <UniqueIdentifier>{bef73e0d-fc41-40dc-b8c2-f866d919a87b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\Math\Vector">
+      <UniqueIdentifier>{0d5c3502-c460-4dd1-9ef1-e16b1b617140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{ca287cf1-21ac-4d6f-8d56-e93fe9918a78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="vector3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mtx44.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Object.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Core\Application</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Core\Engine</Filter>
     </ClCompile>
     <ClCompile Include="GameLogic.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Core\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Core\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="vector3.cpp">
+      <Filter>Util\Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="mtx44.cpp">
+      <Filter>Util\Math\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DebugUtil.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="ftl.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vector3.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mtx44.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.hpp">
-      <Filter>Core</Filter>
+      <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="System.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Application.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.hpp">
-      <Filter>Timer</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics.hpp">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.hpp">
-      <Filter>Object</Filter>
+    <ClInclude Include="Controller.hpp">
+      <Filter>Component\Controller</Filter>
     </ClInclude>
     <ClInclude Include="Object.hpp">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.hpp">
-      <Filter>Object</Filter>
+    <ClInclude Include="Timer.hpp">
+      <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="ComponentType.hpp">
-      <Filter>Object</Filter>
+    <ClInclude Include="Application.hpp">
+      <Filter>Core\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.hpp">
+      <Filter>Core\Engine</Filter>
     </ClInclude>
     <ClInclude Include="GameLogic.hpp">
-      <Filter>GameLogic</Filter>
+      <Filter>Core\GameLogic</Filter>
     </ClInclude>
-    <ClInclude Include="Controller.hpp">
-      <Filter>GameLogic\Controller</Filter>
+    <ClInclude Include="Graphics.hpp">
+      <Filter>Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentType.hpp">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.hpp">
+      <Filter>Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="vector3.hpp">
+      <Filter>Util\Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="mtx44.hpp">
+      <Filter>Util\Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.hpp">
+      <Filter>Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
