@@ -26,7 +26,7 @@ void PlayerController::Update(float dt)
 {
 				Movement();
 				Experience(dt);
-				if (Input::instance()->IsTriggered(SDL_SCANCODE_F)) {
+				if (Input::instance()->IsTriggered(Key_SCANCODE_F)) {
 								--health;
 				}
 					pTransform->SetPosition(pos);
@@ -35,22 +35,23 @@ void PlayerController::Update(float dt)
 									pTransform->GetPosition().y << " " <<
 									pTransform->GetPosition().z << "\n";
 																		
+					
 }
 
 void SWE::PlayerController::Movement()
 {
 				Input* pInput = Input::instance();
-			if (pInput->IsPressed(SDL_SCANCODE_W)) {
+			if (pInput->IsPressed(Key_SCANCODE_W)) {
 								++pos.y;
 				}
-				if (pInput->IsPressed(SDL_SCANCODE_S)) {
+				if (pInput->IsPressed(Key_SCANCODE_S)) {
 								--pos.y;
 				}
 
-if (pInput->IsPressed(SDL_SCANCODE_D)) {
+if (pInput->IsPressed(Key_SCANCODE_D)) {
 								++pos.x;
 				}
-				if (pInput->IsPressed(SDL_SCANCODE_A)) {
+				if (pInput->IsPressed(Key_SCANCODE_A)) {
 								--pos.x;
 				}
 

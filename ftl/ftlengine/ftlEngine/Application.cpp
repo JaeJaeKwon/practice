@@ -120,12 +120,14 @@ void SWE::Application::PollKeyboardEvent(SDL_Event & currEvent)
 				switch (currEvent.type) {
 				case SDL_KEYDOWN: {
 
-								Input::instance()->SetKeyPressed(currEvent.key.keysym.scancode, SDL_KEYDOWN);
+								Input::instance()->SetKeyPressed(static_cast<Key_Scancode>(currEvent.key.keysym.scancode),
+																																								 static_cast<Key_EventType>(SDL_KEYDOWN));
 
 				}break;
 				case SDL_KEYUP: {
 
-								Input::instance()->SetKeyPressed(currEvent.key.keysym.scancode, SDL_KEYUP);
+								Input::instance()->SetKeyPressed(static_cast<Key_Scancode>(currEvent.key.keysym.scancode), 
+																																								 static_cast<Key_EventType>(SDL_KEYUP));
 
 				}break;
 

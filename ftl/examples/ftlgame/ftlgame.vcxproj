@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)ftlengine\ftlEngine\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\glm\;$(SolutionDir)ftlengine\ftlEngine\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -109,7 +109,7 @@ copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(Tar
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)ftlengine\ftlEngine\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\glm\;$(SolutionDir)ftlengine\ftlEngine\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -129,7 +129,7 @@ copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(Tar
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(SolutionDir)\external\SDL2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\glm\;$(SolutionDir)ftlengine\ftlEngine\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -151,7 +151,7 @@ copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(Tar
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\glm\;$(SolutionDir)ftlengine\ftlEngine\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

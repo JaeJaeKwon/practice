@@ -3,9 +3,9 @@
 #include "Timer.hpp"
 #include "Input.hpp"
 #include "Graphics.hpp"
-
 #include "Object.hpp"
 #include "GameLogic.hpp"
+#include "Factory.hpp"
 
 #include "..\..\examples\ftlgame\PlayerController.hpp"
 
@@ -23,6 +23,7 @@ SWE::Engine::Engine(bool /*debugMode_*/) : GameIsRunning(true)
 				//ENGINE = this;
 		//Add systems to the engine
 				AddSystem(Application::instance());
+				AddSystem(ObjectFactory::instance());
 				AddSystem(GameLogic::instance());
 				AddSystem(Graphics::instance());
 				
@@ -47,12 +48,9 @@ void SWE::Engine::GameLoop()
 				////Initialize Timer
 				//Timer::instance();
 
-				Object* test = new Object();
-				test->AddComponent(new Transform());
-				test->AddComponent(new PlayerController());
-	/*			Transform* trans = static_cast<Transform*>(test->GetComponent(ComponentType::CT_TRANSFORM));
-				std::cout << trans->GetPosition().x <<" " << trans->GetPosition().y <<" "<< trans->GetPosition().z;*/
-				test->Initialize();
+				//Testing Object creation. Delete afterwards
+				Object* player = ObjectFactory::instance()->CreatePlayer();
+				player;
 				while (GameIsRunning) {
 								//Update the dt
 								dt = Timer::instance()->GetDelta();
@@ -63,7 +61,7 @@ void SWE::Engine::GameLoop()
 								}
 
 				}
-				delete test;
+				ObjectFactory::instance()->DestroyAllObjects();
 				//When Engine Shutsdown
 }
 

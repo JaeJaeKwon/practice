@@ -5,6 +5,7 @@
 
 namespace SWE {
 
+				class Sprite;
 				class Graphics :public System
 				{
 				public:

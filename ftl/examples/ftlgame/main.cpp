@@ -10,7 +10,7 @@
 #include <ftl.hpp>
 #include <Engine.hpp>
 
-#include <SDL.h>
+#include "..\..\external\SDL2\include\SDL.h"
 /*
 int WINAPI WinMain(HINSTANCE, HINSTANCE , LPSTR, int) {
 				SDL_Init(SDL_INIT_VIDEO);

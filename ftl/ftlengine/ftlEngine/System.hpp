@@ -22,6 +22,7 @@ namespace SWE {
 
 				private:
 
+				protected:
 				};
 
 } //namespace SWE end

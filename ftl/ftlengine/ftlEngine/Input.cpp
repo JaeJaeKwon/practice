@@ -1,5 +1,6 @@
 #include "Input.hpp"
 #include "DebugUtil.hpp"
+#include <SDL.h>
 
 using namespace SWE;
 
@@ -31,7 +32,7 @@ void Input::Reset()
 				}
 }
 
-void Input::SetKeyPressed(SDL_Scancode key_, SDL_EventType keyStatus_)
+void Input::SetKeyPressed(Key_Scancode key_, Key_EventType keyStatus_)
 {
 				DEBUG_ASSERT(key_ < SDL_SCANCODE_UNKNOWN || key_>SDL_NUM_SCANCODES,
 								"KeyError");
@@ -46,17 +47,17 @@ void Input::SetKeyPressed(SDL_Scancode key_, SDL_EventType keyStatus_)
 				}
 }
 
-bool Input::IsPressed(SDL_Scancode key_)const
+bool Input::IsPressed(Key_Scancode key_)const
 {
 				return s_pressed[key_];
 }
 
-bool Input::IsTriggered(SDL_Scancode key_)const
+bool Input::IsTriggered(Key_Scancode key_)const
 {
 				return s_triggered[key_];
 }
 
-bool Input::IsReleased(SDL_Scancode key_)const
+bool Input::IsReleased(Key_Scancode key_)const
 {
 				return s_released[key_];
 }

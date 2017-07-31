@@ -16,15 +16,15 @@ namespace SWE {
 				{
 				public:
 								
-								friend class Object;
-								Component(ComponentType type) : Type(type) {}
-								virtual ~Component() {};
+								//friend class Object; ??
+								Component(ComponentType type) : Type(type){}
+								virtual ~Component() {}
 
 								//Object will initialize all components
 								virtual void Initialize() {}
-								Object* GetOwner() { return pOwner; }
+								Object* GetOwner()const {return pOwner;}
 								void SetOwner(Object* owner) { pOwner = owner; }
-								ComponentType GetType() {return Type;}
+								ComponentType GetType()const { return Type; }
 
 				private:
 								Object* pOwner;

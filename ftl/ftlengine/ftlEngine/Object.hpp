@@ -8,31 +8,35 @@ entities in the game engine will be built upon.
 */
 
 #include "Component.hpp"
-#include "Transform.hpp"
 #include "ComponentType.hpp"
-#include "Controller.hpp"
+/*#include "Transform.hpp"
+#include "Controller.hpp"*/
 #include <vector>
 #include <memory>
 
 namespace SWE {
 
 				typedef unsigned int ObjectID;
+				class Transform;
+				class Controller;
+				class Sprite;
+				class Body;
 				class Object
 				{
 				public:
-								//Todo: friend class to ObjectFactory
+								friend class ObjectFactory;
 
 								Object();
 								~Object();
 
 								void Initialize();
 								//Properly destroy the object by delay destruction
-								void Destroy();
+								//void Destroy();
 								bool AddComponent(Component* pComponent);
 								Component* GetComponent(ComponentType type);
 
 				private:
-								std::vector<std::unique_ptr<Component>> pCompVec;
+								//std::vector<std::unique_ptr<Component>> pCompVec;
 								ObjectID objID;
 								/*All different types of pointers to different components
 								but set to nullptyr if component doesn't exist
@@ -41,8 +45,8 @@ namespace SWE {
 
 								Transform* transform;
 								Controller* controller;
-	//							Sprite* sprite
-		//						Body* body
+								Sprite* sprite;
+								Body* body;
 			//					Logic* logic
 								
 

@@ -44,6 +44,18 @@
     <Filter Include="Input">
       <UniqueIdentifier>{ca287cf1-21ac-4d6f-8d56-e93fe9918a78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Body">
+      <UniqueIdentifier>{91ef322a-cb94-4e0d-b659-580e1d59f6d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Physics">
+      <UniqueIdentifier>{bd9842ee-c845-4e3e-9b11-973ad2cce14c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Sprite">
+      <UniqueIdentifier>{4191b4dc-3494-4d43-85df-28ca12c06072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Factory">
+      <UniqueIdentifier>{4df17421-5b7b-4893-be84-d05e345788cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Object.cpp">
@@ -69,6 +81,10 @@
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="Factory.cpp">
+      <Filter>Core\Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +134,21 @@
       <Filter>Util\Math\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="Input.hpp">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.hpp">
+      <Filter>Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.hpp">
+      <Filter>Component\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.hpp">
+      <Filter>Component\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.hpp">
+      <Filter>Core\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="MyInput.hpp">
       <Filter>Input</Filter>
     </ClInclude>
   </ItemGroup>

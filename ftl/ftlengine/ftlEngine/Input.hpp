@@ -3,7 +3,7 @@
 Input.hpp
 HeeJae Kwon
 */
-#include <SDL.h>
+#include "MyInput.hpp"
 #include <bitset>
 #include <memory>
 
@@ -12,6 +12,7 @@ namespace SWE {
 				class Input
 				{
 				public:
+								friend class Application;
 																								//Magical singletern code
 								  static Input* instance()  //!< Returns an instance of the class
         {
@@ -22,13 +23,10 @@ namespace SWE {
 								//void Initialize();
 								void Reset();
 
-								//Sets pressed, triggered, released, or unpressed status of a key
-								void SetKeyPressed(SDL_Scancode key, SDL_EventType keyStatus);
-
 								//Check if a specific key is
-								bool IsPressed(SDL_Scancode key)const;
-								bool IsTriggered(SDL_Scancode key)const;
-								bool IsReleased(SDL_Scancode key)const;
+								bool IsPressed(Key_Scancode key)const;
+								bool IsTriggered(Key_Scancode key)const;
+								bool IsReleased(Key_Scancode key)const;
 
 								bool IsAnyPressed()const;
 								bool IsAnyTriggered()const;
@@ -36,12 +34,16 @@ namespace SWE {
 
 				private:
 										Input();
+								void SetKeyPressed(Key_Scancode key, Key_EventType keyStatus);
+
+								//Sets pressed, triggered, released, or unpressed status of a key
+
 												//Container of keys pressed 
-				std::bitset<SDL_NUM_SCANCODES> s_pressed;
+				std::bitset<Key_NUM_SCANCODES> s_pressed;
 				//Container of keys triggered
-				std::bitset<SDL_NUM_SCANCODES> s_triggered;
+				std::bitset<Key_NUM_SCANCODES> s_triggered;
 				//Container of keys released 
-				std::bitset<SDL_NUM_SCANCODES> s_released;
+				std::bitset<Key_NUM_SCANCODES> s_released;
 
 				};
 

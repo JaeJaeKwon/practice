@@ -95,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)external\glew\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)external\glew\include\;$(SolutionDir)external\glm\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -104,7 +104,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)external\glew\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)external\glew\include\;$(SolutionDir)external\glm\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,7 +115,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)external\glew\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)external\glew\include\;$(SolutionDir)external\glm\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -130,7 +130,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)external\glew\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL2\include\;$(SolutionDir)external\glew\include\;$(SolutionDir)external\glm\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -140,26 +140,33 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="mtx44.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.hpp" />
+    <ClInclude Include="Body.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="ComponentType.hpp" />
     <ClInclude Include="Controller.hpp" />
     <ClInclude Include="DebugUtil.hpp" />
     <ClInclude Include="Engine.hpp" />
+    <ClInclude Include="Factory.hpp" />
     <ClInclude Include="ftl.hpp" />
     <ClInclude Include="GameLogic.hpp" />
     <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="Input.hpp" />
     <ClInclude Include="mtx44.hpp" />
+    <ClInclude Include="MyInput.hpp" />
     <ClInclude Include="Object.hpp" />
+    <ClInclude Include="Physics.hpp" />
+    <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="System.hpp" />
     <ClInclude Include="Timer.hpp" />
     <ClInclude Include="Transform.hpp" />

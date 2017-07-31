@@ -3,6 +3,10 @@ Obejct.cpp
 HeeJae Kwon
 */
 #include "Object.hpp"
+#include "Sprite.hpp"
+#include "Body.hpp"
+#include "Transform.hpp"
+#include "Controller.hpp"
 
 using namespace SWE;
 
@@ -12,7 +16,16 @@ Object::Object() : transform(nullptr), controller(nullptr)
 
 Object::~Object()
 {
-				Destroy();
+				if (transform) {
+							delete	transform;
+							transform = nullptr;
+				}
+				if (controller) {
+								delete controller;
+								controller = nullptr;
+				}
+
+//				Destroy();
 }
 
 void Object::Initialize()
@@ -27,17 +40,9 @@ void Object::Initialize()
 }
 
 //Signal the object 
-void Object::Destroy()
-{
-				if (transform) {
-							delete	transform;
-							transform = nullptr;
-				}
-				if (controller) {
-								delete controller;
-								controller = nullptr;
-				}
-}
+//void Object::Destroy()
+//{
+//}
 
 bool Object::AddComponent(Component* pComponent)
 {
@@ -46,7 +51,7 @@ bool Object::AddComponent(Component* pComponent)
 				if (type > CT_INVALID && type < CT_NUM_COMPONENTS) {
 								pComponent->SetOwner(this);
 				}
-				switch (pComponent->GetType())
+				switch (type)
 				{
 				case CT_TRANSFORM: { transform = static_cast<Transform*>(pComponent); return true; }break;
 				case CT_CONTROLLER: { controller = static_cast<Controller*>(pComponent); return true; }break;
