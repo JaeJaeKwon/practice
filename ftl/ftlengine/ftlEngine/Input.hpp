@@ -12,7 +12,7 @@ namespace SWE {
 				class Input
 				{
 				public:
-								friend class Application;
+								friend class Application; //for using SetKeyPressed
 																								//Magical singletern code
 								  static Input* instance()  //!< Returns an instance of the class
         {

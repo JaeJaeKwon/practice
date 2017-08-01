@@ -22,7 +22,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE , LPSTR, int) {
 //int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int) {
 int main(int, char**) {
 				//debug
-				DEBUG_MEMORY_LECHECKS();
+				DEBUG_MEMORY_LEAK_CHECKS();
 				DEBUG_CREATE_CONSOLE();
 				//Todo: Create Engine
 				SWE::Engine* SWEngine = SWE::Engine::instance();

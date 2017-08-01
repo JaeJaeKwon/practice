@@ -41,9 +41,6 @@
     <Filter Include="Util\Math\Vector">
       <UniqueIdentifier>{0d5c3502-c460-4dd1-9ef1-e16b1b617140}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Input">
-      <UniqueIdentifier>{ca287cf1-21ac-4d6f-8d56-e93fe9918a78}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Component\Body">
       <UniqueIdentifier>{91ef322a-cb94-4e0d-b659-580e1d59f6d5}</UniqueIdentifier>
     </Filter>
@@ -55,6 +52,12 @@
     </Filter>
     <Filter Include="Core\Factory">
       <UniqueIdentifier>{4df17421-5b7b-4893-be84-d05e345788cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Application\Input">
+      <UniqueIdentifier>{ca287cf1-21ac-4d6f-8d56-e93fe9918a78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Application\Timer">
+      <UniqueIdentifier>{6367379d-ea52-4efa-a423-a06c1364890e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,11 +83,13 @@
       <Filter>Util\Math\Matrix</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
-      <Filter>Input</Filter>
+      <Filter>Core\Application\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Factory.cpp">
       <Filter>Core\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Core\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,9 +107,6 @@
     </ClInclude>
     <ClInclude Include="Object.hpp">
       <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.hpp">
-      <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="Application.hpp">
       <Filter>Core\Application</Filter>
@@ -134,7 +136,7 @@
       <Filter>Util\Math\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="Input.hpp">
-      <Filter>Input</Filter>
+      <Filter>Core\Application\Input</Filter>
     </ClInclude>
     <ClInclude Include="Physics.hpp">
       <Filter>Core\Physics</Filter>
@@ -149,7 +151,10 @@
       <Filter>Core\Factory</Filter>
     </ClInclude>
     <ClInclude Include="MyInput.hpp">
-      <Filter>Input</Filter>
+      <Filter>Core\Application\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.hpp">
+      <Filter>Core\Application\Timer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

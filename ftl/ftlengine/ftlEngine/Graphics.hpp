@@ -1,6 +1,6 @@
 #pragma once
 #include "System.hpp"
-#include "GL\glew.h"
+//#include <GL\glew.h>
 #include <memory>
 
 namespace SWE {
@@ -26,11 +26,15 @@ namespace SWE {
 
 				private:
 								Graphics();
-								GLuint CreateShader(GLenum Shadertype, const char * fileName);
+						//		GLuint CreateShader(GLenum Shadertype, const char * fileName);
+							//	void CreateCircleVertexBuffer();
 
 
-								GLuint program;
-								GLuint VAO;
+								unsigned int program;
+								unsigned int VAO;
+								//GLfloat* g_circleVertexBuffer;
+								//int numVertices;
+								//const float PI = 3.14159265359;
 
 				};
 

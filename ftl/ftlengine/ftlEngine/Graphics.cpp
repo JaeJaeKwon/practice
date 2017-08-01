@@ -5,11 +5,13 @@
 
 #include <fstream> //file stream; open file
 #include <sstream> //string stream; file -> string
-
 #include <vector>
 
+#include <SOIL.h>
+#include <GL\glew.h>
 
-SWE::Graphics::Graphics()
+
+SWE::Graphics::Graphics() //: numVertices(0)
 {
 }
 
@@ -20,7 +22,8 @@ SWE::Graphics::~Graphics()
 				glDeleteProgram(program);
 }
 
-GLuint SWE::Graphics::CreateShader(GLenum Shadertype, const char * fileName)
+//CreateShader Global function
+GLuint CreateShader(GLenum Shadertype, const char * fileName)
 {
 				std::fstream f;
 				f.open(fileName);
@@ -47,6 +50,33 @@ GLuint SWE::Graphics::CreateShader(GLenum Shadertype, const char * fileName)
 
 				return shader;
 }
+
+//void SWE::Graphics::CreateCircleVertexBuffer()
+//{
+//				const int LevelOfDetail = 36; // one vertex per 10 degree
+//				numVertices = LevelOfDetail + 2; //1 for center, 1 for loop
+//				g_circleVertexBuffer = new GLfloat[numVertices*3];  //x, y, z per vertex
+//
+//				//Center vertex
+//				g_circleVertexBuffer[0] = 0;
+//				g_circleVertexBuffer[1] = 0;
+//				g_circleVertexBuffer[2] = 0;
+//
+//				GLfloat* step = &g_circleVertexBuffer[3];
+//				float draian = PI / LevelOfDetail;
+//				float dr = 0;
+//				for (int i = 0; i < LevelOfDetail; i +=3 /*x,y,z*/) {
+//								step[i] = cosf(draian);
+//								step[i+1] = sinf(draian);
+//								step[i+2] = 0;
+//								dr += draian;
+//				}
+//
+//				g_circleVertexBuffer[numVertices * 3 - 3] = step[0];
+//				g_circleVertexBuffer[numVertices * 3 - 2] = step[1];
+//				g_circleVertexBuffer[numVertices * 3 - 1] = step[2];
+//}
+
 
 
 void SWE::Graphics::Initialize(void)
@@ -95,15 +125,28 @@ void SWE::Graphics::Initialize(void)
 				glBindVertexArray(VAO);
 
 				GLuint buffer;
-				GLfloat bufferData[] = { 0,   0,   0,  //0
+				GLfloat bufferData[] = {
+																												-1, 1,0, //Top left vertex
+																													1, 1,0,	//Top right vertex
+																													1,-1,0, //Bottom right vertex
+																													//
+
+																												 0,1, //Top left texture coordinate
+																													1,1,  //Top right
+																													1,0, //Bottom right
+																													//9+6 = 15
+
+																													0,   0,   0,  //0
 																												 0,   0.5f,0, //1
 																													0.5f,0,   0, //2
 																													0,  -0.5f,0, //4
+																													//27
 																												//Color data
 																													1, 0, 0, 1, //Red
 																													0, 1, 0, 1, //Green
 																													0, 0, 1, 1, //Blue
 																													1, 0, 0, 1
+																													//27+16
 																																}; //3
 				//create opengl buffer object
 				glGenBuffers(1, &buffer);
@@ -115,12 +158,46 @@ void SWE::Graphics::Initialize(void)
 				glEnableVertexAttribArray(0); //Vertex
 				glVertexAttribPointer(0, 3/*x,y,z*/, GL_FLOAT, GL_FALSE, 0, (void*)0);
 				glEnableVertexAttribArray(1); //color
-				glVertexAttribPointer(1, 4/*rgba*/, GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[12]));
+				glVertexAttribPointer(1, 4/*rgba*/, GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[27]));
+
+				glEnableVertexAttribArray(2); // Texture coordinate
+				glVertexAttribPointer(2, 2,/*u,v*/GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[9]));
 
 				glBindVertexArray(0);
 				glDisableVertexAttribArray(0);
 				glDisableVertexAttribArray(1);
+				glDisableVertexAttribArray(2);
 				glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+				GLuint location = glGetUniformLocation(program, "texturing");
+				glUseProgram(program);
+				glUniform1i(location, 1);
+				glUseProgram(0);
+
+				//texture loading using SOIL
+				GLuint textureID = SOIL_load_OGL_texture("Slime.png", 
+																																												 SOIL_LOAD_RGBA, 
+																																												 SOIL_CREATE_NEW_ID, 
+																																													SOIL_FLAG_POWER_OF_TWO|SOIL_FLAG_INVERT_Y);
+				glBindTexture(GL_TEXTURE_2D, textureID);
+
+		/*		GLuint circleVAO;
+				glGenVertexArrays(1, &circleVAO);
+				glBindVertexArray(circleVAO);
+
+				GLuint circleBufferObject;
+				glGenBuffers(1, &circleBufferObject);
+				glBindBuffer(GL_VERTEX_ARRAY, circleBufferObject);
+				glBufferData(GL_VERTEX_ARRAY, sizeof(float[38*3], g_circleVertexBuffer, GL_STATIC_DRAW));
+
+				glEnableVertexAttribArray(0);
+				glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,(void*)0);
+
+				glBindVertexArray(0);
+				glBindBuffer(GL_VERTEX_ARRAY, 0);
+				glDisableVertexAttribArray(0);
+
+				glBindVertexArray(circleVAO);*/
 
 }
 
@@ -131,7 +208,7 @@ void SWE::Graphics::Update(float /*dt*/)
 				glUseProgram(program);
 				glBindVertexArray(VAO);
 			
-				glDrawArrays(GL_TRIANGLES, 1, 3);
+				glDrawArrays(GL_TRIANGLES, 0, 3);
 
 				glUseProgram(0);
 				glBindVertexArray(0);

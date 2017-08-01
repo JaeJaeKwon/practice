@@ -94,8 +94,8 @@
       <AdditionalIncludeDirectories>$(SolutionDir)external\glm\;$(SolutionDir)ftlengine\ftlEngine\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)external\glew\lib\$(PlatformTarget)\;$(SolutionDir)external\SOIL\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PreBuildEvent>
@@ -112,8 +112,8 @@ copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(Tar
       <AdditionalIncludeDirectories>$(SolutionDir)external\glm\;$(SolutionDir)ftlengine\ftlEngine\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)external\glew\lib\$(PlatformTarget)\;$(SolutionDir)external\SOIL\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PreBuildEvent>
@@ -134,8 +134,8 @@ copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(Tar
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)external\glew\lib\$(PlatformTarget)\;$(SolutionDir)external\SOIL\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PreBuildEvent>
@@ -156,8 +156,8 @@ copy /y /b "$(SolutionDir)external\glew\bin\$(PlatformTarget)\glew32.dll" "$(Tar
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)\external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)\external\glew\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)external\SDL2\lib\$(PlatformTarget)\;$(SolutionDir)external\ftl\lib\$(PlatformTarget)\;$(SolutionDir)external\glew\lib\$(PlatformTarget)\;$(SolutionDir)external\SOIL\lib\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;ftlEngine.lib;glew32.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PreBuildEvent>
