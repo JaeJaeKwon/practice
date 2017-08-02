@@ -4,13 +4,14 @@ HeeJae Kwon
 */
 #include "Object.hpp"
 #include "Sprite.hpp"
-#include "Body.hpp"
+#include "Rigidbody.hpp"
 #include "Transform.hpp"
 #include "Controller.hpp"
+#include "Sprite.hpp"
 
 using namespace SWE;
 
-Object::Object() : transform(nullptr), controller(nullptr)
+Object::Object() : transform(nullptr), controller(nullptr), sprite(nullptr)
 {
 }
 
@@ -24,6 +25,15 @@ Object::~Object()
 								delete controller;
 								controller = nullptr;
 				}
+				if (sprite) {
+								delete sprite;
+								sprite = nullptr;
+				}
+				if (rigidbody) {
+								delete rigidbody;
+								rigidbody = nullptr;
+				}
+				
 
 //				Destroy();
 }
@@ -36,6 +46,12 @@ void Object::Initialize()
 				}
 				if (controller) {
 								controller->Initialize();
+				}
+				if (sprite) {
+								sprite->Initialize();
+				}
+				if (rigidbody) {
+								rigidbody->Initialize();
 				}
 }
 
@@ -55,6 +71,8 @@ bool Object::AddComponent(Component* pComponent)
 				{
 				case CT_TRANSFORM: { transform = static_cast<Transform*>(pComponent); return true; }break;
 				case CT_CONTROLLER: { controller = static_cast<Controller*>(pComponent); return true; }break;
+				case CT_SPRITE: { sprite = static_cast<Sprite*>(pComponent); return true; }break;
+				case CT_RIGIDBODY: { rigidbody = static_cast<Rigidbody*>(pComponent); return true; }break;
 				default:
 								break;
 				}
@@ -71,6 +89,12 @@ Component* Object::GetComponent(ComponentType type)
 				case CT_CONTROLLER: {
 								return controller;
 				}break;	
+				case CT_SPRITE: {
+								return sprite;
+				}break;
+				case CT_RIGIDBODY: {
+								return rigidbody;
+				}break;
 				}
 
 				return nullptr;

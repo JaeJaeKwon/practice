@@ -7,7 +7,7 @@ namespace SWE {
 				CT_TRANSFORM,
 				CT_CONTROLLER,
 				CT_SPRITE,
-				CT_BODY,
+				CT_RIGIDBODY,
 
 								CT_NUM_COMPONENTS
 				}ComponentType;

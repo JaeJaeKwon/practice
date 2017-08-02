@@ -2,6 +2,9 @@
 #include "Input.hpp"				
 #include "Object.hpp"
 #include "Transform.hpp"
+#include "Rigidbody.hpp"
+
+#include <iostream>
 
 using namespace SWE;
 
@@ -10,7 +13,7 @@ PlayerController::PlayerController()
 				health = 20;
 				experience = 0;
 				expTimer = 3.f;
-				pos.SetZero();
+				//pos.SetZero();
 }
 
 PlayerController::~PlayerController()
@@ -20,44 +23,44 @@ PlayerController::~PlayerController()
 void PlayerController::Initialize()
 {
 				pTransform = static_cast<Transform*>(GetOwner()->GetComponent(CT_TRANSFORM));
+				pRigidbody = static_cast<Rigidbody*>(GetOwner()->GetComponent(CT_RIGIDBODY));
 }
 
 void PlayerController::Update(float dt)
 {
-				Movement();
+				Movement(dt);
 				Experience(dt);
 				if (Input::instance()->IsTriggered(Key_SCANCODE_F)) {
 								--health;
 				}
-					pTransform->SetPosition(pos);
+			//		pTransform->SetPosition(pos);
 
-					std::cout << pTransform->GetPosition().x << " " <<
-									pTransform->GetPosition().y << " " <<
-									pTransform->GetPosition().z << "\n";
-																		
-					
+					std::cout << pTransform->GetPosition().x << ", " << pTransform->GetPosition().y << "\n";
 }
 
-void SWE::PlayerController::Movement()
+void PlayerController::Movement(float dt)
 {
 				Input* pInput = Input::instance();
-			if (pInput->IsPressed(Key_SCANCODE_W)) {
-								++pos.y;
+				if (pInput->IsPressed(Key_SCANCODE_W)) {
+							pRigidbody->m_force += Vector3(0, 50.f*dt, 0);
+								//pos.y += dt;
 				}
 				if (pInput->IsPressed(Key_SCANCODE_S)) {
-								--pos.y;
+								pRigidbody->m_force += Vector3(0, -50.f*dt, 0);
+								//pos.y -= dt;
 				}
 
-if (pInput->IsPressed(Key_SCANCODE_D)) {
-								++pos.x;
+				if (pInput->IsPressed(Key_SCANCODE_D)) {
+								pRigidbody->m_force += Vector3(50.f*dt, 0, 0);
+								//	pos.x += dt;
 				}
 				if (pInput->IsPressed(Key_SCANCODE_A)) {
-								--pos.x;
+								pRigidbody->m_force += Vector3(-50.f*dt, 0, 0);
+								//pos.x -= dt;
 				}
-
 }
 
-void SWE::PlayerController::Experience(float dt)
+void PlayerController::Experience(float dt)
 {
 				expTimer += dt;
 				if (expTimer >= 3.f) {

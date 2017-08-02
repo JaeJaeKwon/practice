@@ -20,7 +20,7 @@ namespace SWE {
 				class Transform;
 				class Controller;
 				class Sprite;
-				class Body;
+				class Rigidbody;
 				class Object
 				{
 				public:
@@ -46,7 +46,7 @@ namespace SWE {
 								Transform* transform;
 								Controller* controller;
 								Sprite* sprite;
-								Body* body;
+								Rigidbody* rigidbody;
 			//					Logic* logic
 								
 

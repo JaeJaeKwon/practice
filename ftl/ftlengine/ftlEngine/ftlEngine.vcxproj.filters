@@ -41,9 +41,6 @@
     <Filter Include="Util\Math\Vector">
       <UniqueIdentifier>{0d5c3502-c460-4dd1-9ef1-e16b1b617140}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\Body">
-      <UniqueIdentifier>{91ef322a-cb94-4e0d-b659-580e1d59f6d5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Physics">
       <UniqueIdentifier>{bd9842ee-c845-4e3e-9b11-973ad2cce14c}</UniqueIdentifier>
     </Filter>
@@ -58,6 +55,9 @@
     </Filter>
     <Filter Include="Core\Application\Timer">
       <UniqueIdentifier>{6367379d-ea52-4efa-a423-a06c1364890e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Rigidbody">
+      <UniqueIdentifier>{91ef322a-cb94-4e0d-b659-580e1d59f6d5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +90,15 @@
     </ClCompile>
     <ClCompile Include="Physics.cpp">
       <Filter>Core\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Component\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Component\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Component\Rigidbody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,9 +150,6 @@
     <ClInclude Include="Physics.hpp">
       <Filter>Core\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Body.hpp">
-      <Filter>Component\Body</Filter>
-    </ClInclude>
     <ClInclude Include="Sprite.hpp">
       <Filter>Component\Sprite</Filter>
     </ClInclude>
@@ -155,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="Timer.hpp">
       <Filter>Core\Application\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.hpp">
+      <Filter>Component\Rigidbody</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

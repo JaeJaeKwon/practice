@@ -1,6 +1,10 @@
 #include "Factory.hpp"
 #include "..\..\examples\ftlgame\PlayerController.hpp"
 #include "Transform.hpp"
+#include "Graphics.hpp"
+#include "Rigidbody.hpp"
+#include "Sprite.hpp"
+#include "DebugUtil.hpp"
 
 using namespace SWE;
 
@@ -77,15 +81,22 @@ Object * ObjectFactory::CreateEmptyObject()
 				return gameObject;
 }
 
-Object * ObjectFactory::CreatePlayer()
+Object * ObjectFactory::CreatePlayer(const Vector3& position, const Vector3& velocity, float mass)
 {
 				Object* player = CreateEmptyObject();
 				Transform* transform = new Transform();
-				transform->SetPosition(Vector3(0, 0, 0));
+				transform->SetPosition(position);
 				player->AddComponent(transform);
 
 				//Todo: add Sprite and Body components
+				Sprite* sprite = new Sprite();
+				sprite->Size.Set(100, 100, 0);
+				sprite->TextureID = 1;
+
+				player->AddComponent(sprite);
+				player->AddComponent(new Rigidbody(velocity, mass));
 				player->AddComponent(new PlayerController());
 				player->Initialize();
+
 				return player;
 }

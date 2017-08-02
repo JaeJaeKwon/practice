@@ -6,6 +6,7 @@
 #include "Object.hpp"
 #include "GameLogic.hpp"
 #include "Factory.hpp"
+#include "Physics.hpp"
 
 #include "..\..\examples\ftlgame\PlayerController.hpp"
 
@@ -13,25 +14,23 @@
 #include <iostream>
 
 
-namespace SWE {
 
-				//Engine* ENGINE;
-}
-
-SWE::Engine::Engine(bool /*debugMode_*/) : GameIsRunning(true)
+SWE::Engine::Engine(bool /*debugMode_*/) : GameIsRunning(true),
+dt(0), pm_fixeddt(1/60.f), pm_accumulator(0), pm_accumulatorlock(0.25f)
 {
 				//ENGINE = this;
 		//Add systems to the engine
-				AddSystem(Application::instance());
-				AddSystem(ObjectFactory::instance());
-				AddSystem(GameLogic::instance());
-				AddSystem(Graphics::instance());
+				Application::instance()->Initialize(); // 0
+				ObjectFactory::instance()->Initialize(); //1
+				GameLogic::instance()->Initialize(); //2
+				Physics::instance()->Initialize(); //3
+				Graphics::instance()->Initialize(); //4
 				
 
 				//Initialize systems after being added
-				for (auto & sys : SystemsList) {
+/*				for (auto & sys : SystemsList) {
 								sys->Initialize();
-				}
+				}*/
 
 				Input::instance();
 				//Initialize Timer
@@ -44,55 +43,53 @@ SWE::Engine::~Engine()
 
 void SWE::Engine::GameLoop()
 {
-				//Input::instance();
-				////Initialize Timer
-				//Timer::instance();
 
 				//Testing Object creation. Delete afterwards
-				Object* player = ObjectFactory::instance()->CreatePlayer();
+				Object* player = ObjectFactory::instance()->CreatePlayer(Vector3(0,0,0),Vector3(0,0,0), 1.f);
 				player;
 				while (GameIsRunning) {
 								//Update the dt
+								//Calculayte the amount of time took for one iteration in prvious frame.
 								dt = Timer::instance()->GetDelta();
+								pm_accumulator += dt;
 
-								//Update all systems
-								for (auto & sys: SystemsList) {
-												sys->Update(dt);
+								//To prevent spiral of death; just a user defined random number.
+								if (pm_accumulator > pm_accumulatorlock) {
+												pm_accumulator = pm_accumulatorlock;
 								}
 
+								//Update all systems
+								/*for (auto & sys: SystemsList) {
+												sys->Update(dt);
+								}*/
+								//for (int i = 0; i < 3/*3 is the index for the physics
+								//																						  Todo : Implement GetSystem function, whether it's templatized or...*/
+								//				; ++i) {
+								//				SystemsList[i]->Update(dt);
+								//}
+								Application::instance()->Update(dt);
+								ObjectFactory::instance()->Update(dt);
+								GameLogic::instance()->Update(dt);
+
+								while (pm_accumulator >= pm_fixeddt) {
+												Physics::instance()->Update(pm_accumulator);
+												pm_accumulator -= pm_fixeddt;
+								}
+								//Have to implement linear interpolation, for the smooth game feels.
+								Graphics::instance()->Update(pm_accumulator);
+
 				}
-				ObjectFactory::instance()->DestroyAllObjects();
+				//ObjectFactory::instance()->DestroyAllObjects();
 				//When Engine Shutsdown
 }
 
-//void SWE::Engine::DestroyAllSystems()
+
+//void SWE::Engine::AddSystem(System* system)
 //{
-//				//Delete all systems (in reverse) that they were added in
-//				//to minimize dependency problems between systems
-//				//for (auto & sys : SystemsList) {
-//				//				delete sys;
-//				//}
+//				//Add a system to the Engine to be updated every frame
+//				SystemsList.push_back(system);
 //}
 
-void SWE::Engine::AddSystem(System* system)
-{
-				//Add a system to the Engine to be updated every frame
-				SystemsList.push_back(system);
-}
-
-//void SWE::Engine::Initialize()
-//{
-//				//Add systems to the engine
-//				AddSystem(Application::instance());
-//				AddSystem(GameLogic::instance());
-//				AddSystem(Graphics::instance());
-//				
-//
-//				//Initialize systems after being added
-//				for (auto & sys : SystemsList) {
-//								sys->Initialize();
-//				}
-//}
 
 void SWE::Engine::Quit()
 {

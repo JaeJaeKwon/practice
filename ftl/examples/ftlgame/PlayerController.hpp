@@ -1,10 +1,10 @@
 #pragma once
 #include "Controller.hpp"
 #include "vector3.hpp"
-#include <iostream>
 
 namespace SWE {
 				class Transform;
+				class Rigidbody;
 				class PlayerController : public Controller
 				{
 				public:
@@ -16,15 +16,16 @@ namespace SWE {
 
 
 				private:
-								void Movement();
+								void Movement(float dt);
 								void Experience(float dt);
 
 								int health;
 								unsigned int experience;
 								float expTimer;
-								Vector3 pos;
+								//Vector3 pos;
 
 								Transform* pTransform;
+								Rigidbody* pRigidbody;
 
 				};
 }

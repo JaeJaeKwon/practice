@@ -9,6 +9,7 @@ HeeJae Kwon
 
 #include <map>
 #include <memory>
+				class Vector3;
 namespace SWE {
 				class ObjectFactory : public System
 				{
@@ -39,7 +40,7 @@ namespace SWE {
 								Object* CreateEmptyObject();
 								//Showing how to create an object through hardcode
 								//Todo: When applying data driven methods, use this as blueprint
-								Object* CreatePlayer();
+								Object * CreatePlayer(const Vector3 & position, const Vector3 & velocity, float mass);
 
 				private:
 								ObjectFactory();

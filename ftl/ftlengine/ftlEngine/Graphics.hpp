@@ -2,6 +2,7 @@
 #include "System.hpp"
 //#include <GL\glew.h>
 #include <memory>
+#include <vector>
 
 namespace SWE {
 
@@ -23,6 +24,7 @@ namespace SWE {
 								void Update(float dt) override;
 
 								//All systems need a virtual destructor to their desturctors called
+								std::vector<Sprite*> SpriteList;
 
 				private:
 								Graphics();
@@ -32,6 +34,7 @@ namespace SWE {
 
 								unsigned int program;
 								unsigned int VAO;
+								int uniformLocations[2]; // posOffset, sizeOffset
 								//GLfloat* g_circleVertexBuffer;
 								//int numVertices;
 								//const float PI = 3.14159265359;

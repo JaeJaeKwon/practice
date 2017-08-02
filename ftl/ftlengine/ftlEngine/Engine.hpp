@@ -29,7 +29,7 @@ namespace SWE {
 								//Destroy all systems in the engine in reverse to avoid dependency issues
 								//void DestroyAllSystems();
 								//Add systems to the engine
-								void AddSystem(System* system);
+								//void AddSystem(System* system);
 								//Initialize Engine
 								//void Initialize();
 
@@ -41,11 +41,16 @@ namespace SWE {
 								//Hide Constructor
 								Engine(bool debugMode_ = false);
 								//Track all systems the engine uses
-								std::vector<System*> SystemsList;
+							//	std::vector<System*> SystemsList;
 								//Main loop
 								bool GameIsRunning;
 								//delta for each frame
 								float dt;
+								//Fixed time step used for the physics integration function.
+								const float pm_fixeddt;
+								//Accumulation of time cannot exceed pm_accumlock.
+								const float pm_accumulatorlock;
+								float pm_accumulator;
 
 				};
 

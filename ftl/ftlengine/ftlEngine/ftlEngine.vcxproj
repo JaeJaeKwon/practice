@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Factory.cpp" />
     <ClCompile Include="GameLogic.cpp" />
@@ -147,11 +148,13 @@
     <ClCompile Include="mtx44.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.hpp" />
-    <ClInclude Include="Body.hpp" />
+    <ClInclude Include="Rigidbody.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="ComponentType.hpp" />
     <ClInclude Include="Controller.hpp" />

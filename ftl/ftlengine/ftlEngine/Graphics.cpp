@@ -10,6 +10,10 @@
 #include <SOIL.h>
 #include <GL\glew.h>
 
+#include "Sprite.hpp"
+#include "Transform.hpp"
+
+
 
 SWE::Graphics::Graphics() //: numVertices(0)
 {
@@ -42,9 +46,16 @@ GLuint CreateShader(GLenum Shadertype, const char * fileName)
 				glCompileShader(shader);
 				GLint iv;
 				glGetShaderiv(shader, GL_COMPILE_STATUS, &iv);
+
+				GLint InfoLogLength;
+				glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &InfoLogLength);
 				if (iv != GL_TRUE) {
-								DEBUG_PRINT("Failed to compile shader source; %s\n", fileName);
+								std::vector<char> message(InfoLogLength + 1);
+								glGetShaderInfoLog(shader, InfoLogLength, nullptr, &message[0]);
+								DEBUG_PRINT("Error message = %s\n", &message[0]);
+								DEBUG_PRINT("Failed to link program!!");
 				}
+
 
 				f.close();
 
@@ -179,7 +190,11 @@ void SWE::Graphics::Initialize(void)
 																																												 SOIL_LOAD_RGBA, 
 																																												 SOIL_CREATE_NEW_ID, 
 																																													SOIL_FLAG_POWER_OF_TWO|SOIL_FLAG_INVERT_Y);
+				glActiveTexture(GL_TEXTURE0);
 				glBindTexture(GL_TEXTURE_2D, textureID);
+
+				uniformLocations[0] = glGetUniformLocation(program, "posOffset");
+				uniformLocations[1] = glGetUniformLocation(program, "sizeOffset");
 
 		/*		GLuint circleVAO;
 				glGenVertexArrays(1, &circleVAO);
@@ -207,11 +222,28 @@ void SWE::Graphics::Update(float /*dt*/)
 
 				glUseProgram(program);
 				glBindVertexArray(VAO);
-			
-				glDrawArrays(GL_TRIANGLES, 0, 3);
 
-				glUseProgram(0);
+				for (auto & it : SpriteList) {
+								glBindTexture(GL_TEXTURE_2D, it->TextureID);
+								//Todo: set color, animation...
+
+								//Todo: decide 1 unit in game world
+								glUniform2f(uniformLocations[0],
+												it->pTransform->GetPosition().x,
+												it->pTransform->GetPosition().y);
+								//Todo: apply aspect ratio
+								glUniform2f(uniformLocations[1], it->Size.x / 600, it->Size.y / 600);
+								//Drawing vertex arrays
+								//1 param = how to draw the vertices
+								//2							=
+
+
+								glDrawArrays(GL_TRIANGLES, 0, 3);
+				}
+			
+
 				glBindVertexArray(0);
+				glUseProgram(0);
 
 				Application::instance()->SwapWindow();
 }
