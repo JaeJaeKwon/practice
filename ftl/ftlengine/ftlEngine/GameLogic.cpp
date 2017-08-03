@@ -11,9 +11,9 @@ GameLogic::~GameLogic()
 {
 }
 
-void GameLogic::Initialize()
-{
-}
+//void GameLogic::Initialize()
+//{
+//}
 
 void GameLogic::Update(float dt)
 {

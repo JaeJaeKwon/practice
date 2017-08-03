@@ -10,7 +10,6 @@
 
 #include "..\..\examples\ftlgame\PlayerController.hpp"
 
-
 #include <iostream>
 
 
@@ -18,13 +17,15 @@
 SWE::Engine::Engine(bool /*debugMode_*/) : GameIsRunning(true),
 dt(0), pm_fixeddt(1/60.f), pm_accumulator(0), pm_accumulatorlock(0.25f)
 {
+								
+				
 				//ENGINE = this;
 		//Add systems to the engine
-				Application::instance()->Initialize(); // 0
-				ObjectFactory::instance()->Initialize(); //1
-				GameLogic::instance()->Initialize(); //2
-				Physics::instance()->Initialize(); //3
-				Graphics::instance()->Initialize(); //4
+				Application::instance(); // 0
+				ObjectFactory::instance(); //1
+				GameLogic::instance(); //2
+				Physics::instance(); //3
+				Graphics::instance(); //4
 				
 
 				//Initialize systems after being added
@@ -45,8 +46,11 @@ void SWE::Engine::GameLoop()
 {
 
 				//Testing Object creation. Delete afterwards
+				Object* asteroid = ObjectFactory::instance()->CreateAsteroid(Vector3(0,0,0),Vector3(0,0,0), 1.f);
+				asteroid;
 				Object* player = ObjectFactory::instance()->CreatePlayer(Vector3(0,0,0),Vector3(0,0,0), 1.f);
 				player;
+
 				while (GameIsRunning) {
 								//Update the dt
 								//Calculayte the amount of time took for one iteration in prvious frame.
@@ -81,6 +85,7 @@ void SWE::Engine::GameLoop()
 				}
 				//ObjectFactory::instance()->DestroyAllObjects();
 				//When Engine Shutsdown
+				ObjectFactory::instance()->DestroyAllObjects();
 }
 
 

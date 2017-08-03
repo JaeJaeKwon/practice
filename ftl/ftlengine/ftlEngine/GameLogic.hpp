@@ -26,7 +26,7 @@ namespace SWE {
 
 								~GameLogic();
 
-								void Initialize() override;
+								//void Initialize() override;
 								void Update(float dt) override;
 
 								std::list<Controller*> ControllerList;

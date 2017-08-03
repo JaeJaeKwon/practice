@@ -1,5 +1,7 @@
 #include "Rigidbody.hpp"
 #include "Physics.hpp"
+#include "Object.hpp"
+#include "Transform.hpp"
 
 using namespace SWE;
 Rigidbody::Rigidbody(const Vector3 & vel, float inv_mass) : Component(ComponentType::CT_RIGIDBODY),
@@ -16,4 +18,5 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::Initialize()
 {
+						m_pTransform = 	static_cast<Transform*>(GetOwner()->GetComponent(CT_TRANSFORM));
 }

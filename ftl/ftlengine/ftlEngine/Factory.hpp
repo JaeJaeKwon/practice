@@ -22,7 +22,7 @@ namespace SWE {
         }
 								~ObjectFactory();
 
-								void Initialize() override;
+								//void Initialize() override;
 								void Update(float dt) override;
 
 								//Add an object to the destroy list for delay destruction
@@ -41,6 +41,8 @@ namespace SWE {
 								//Showing how to create an object through hardcode
 								//Todo: When applying data driven methods, use this as blueprint
 								Object * CreatePlayer(const Vector3 & position, const Vector3 & velocity, float mass);
+								Object * CreateAsteroid(const Vector3 & position, const Vector3 & velocity, float mass);
+								
 
 				private:
 								ObjectFactory();

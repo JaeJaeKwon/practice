@@ -3,6 +3,7 @@
 #include "vector3.hpp"
 
 namespace SWE {
+				class Transform;
 				class Rigidbody : public Component
 				{
 				public:
@@ -12,6 +13,7 @@ namespace SWE {
 								void Initialize() override;
 
 								Vector3 m_force;
+								Transform* m_pTransform;
 
 
 				private:

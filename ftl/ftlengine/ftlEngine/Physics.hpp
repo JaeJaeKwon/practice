@@ -6,6 +6,16 @@
 
 namespace SWE {
 				class Rigidbody;
+				class Pair
+				{
+				public:
+								Pair(Rigidbody* lhs, Rigidbody* rhs) : m_lhs(lhs),m_rhs(rhs) {}
+
+												Rigidbody* m_lhs,* m_rhs;
+				private:
+
+				};
+
 				class Physics : public System
 				{
 				public:
@@ -18,7 +28,7 @@ namespace SWE {
 								~Physics();
 
 								//Initialize the system
-								void Initialize(void) override;
+								//void Initialize(void) override;
 
 							//All systems are updated every frame
 								void Update(float dt) override;
@@ -27,9 +37,13 @@ namespace SWE {
 								//vector of pointer to Rigidbody
 								std::vector<Rigidbody*> RigidbodyList;
 				private:
+								Physics();
+
 								//Explicit Euler (Forward Euler) Integrator
 								void ExplicitEulerIntegrator(float dt);
-								Physics();
+								void BroadPhase();
+								bool AABBAABBCollisionCheck(Rigidbody*lhs, Rigidbody* rhs);
+								std::vector<Pair> m_vecpair;
 
 				};
 

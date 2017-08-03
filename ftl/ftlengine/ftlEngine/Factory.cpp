@@ -14,12 +14,12 @@ ObjectFactory::ObjectFactory() : LastObjectID(0)
 
 ObjectFactory::~ObjectFactory()
 {
-				DestroyAllObjects();
+				//DestroyAllObjects();
 }
 
-void ObjectFactory::Initialize()
-{
-}
+//void ObjectFactory::Initialize()
+//{
+//}
 
 void ObjectFactory::Update(float /*dt*/)
 {
@@ -90,7 +90,7 @@ Object * ObjectFactory::CreatePlayer(const Vector3& position, const Vector3& vel
 
 				//Todo: add Sprite and Body components
 				Sprite* sprite = new Sprite();
-				sprite->Size.Set(100, 100, 0);
+				sprite->Size.Set(50, 50, 0);
 				sprite->TextureID = 1;
 
 				player->AddComponent(sprite);
@@ -99,4 +99,24 @@ Object * ObjectFactory::CreatePlayer(const Vector3& position, const Vector3& vel
 				player->Initialize();
 
 				return player;
+}
+
+Object * ObjectFactory::CreateAsteroid(const Vector3 & position, const Vector3 & velocity, float mass)
+{
+				Object* player = CreateEmptyObject();
+				Transform* transform = new Transform();
+				transform->SetPosition(position);
+				player->AddComponent(transform);
+
+				//Todo: add Sprite and Body components
+				Sprite* sprite = new Sprite();
+				sprite->Size.Set(100, 100, 0);
+				sprite->TextureID = 1;
+
+				player->AddComponent(sprite);
+				player->AddComponent(new Rigidbody(velocity, mass));
+				player->Initialize();
+
+				return player;
+
 }

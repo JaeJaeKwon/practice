@@ -13,19 +13,6 @@
 #include "Sprite.hpp"
 #include "Transform.hpp"
 
-
-
-SWE::Graphics::Graphics() //: numVertices(0)
-{
-}
-
-
-SWE::Graphics::~Graphics()
-{
-				glBindVertexArray(0);
-				glDeleteProgram(program);
-}
-
 //CreateShader Global function
 GLuint CreateShader(GLenum Shadertype, const char * fileName)
 {
@@ -62,6 +49,152 @@ GLuint CreateShader(GLenum Shadertype, const char * fileName)
 				return shader;
 }
 
+
+SWE::Graphics::Graphics() //: numVertices(0)
+{
+								//glFunctions ..
+				DEBUG_ASSERT(glewInit() != GLEW_OK, "Initializing GLW is failed\n");
+
+				//random values
+				glClearColor(1, 1, 0.3f, 1);
+
+				//Createing shader program
+				program = glCreateProgram();
+
+				//Creating shader
+				GLuint vertexShader = CreateShader(GL_VERTEX_SHADER, "vertexShader.vert");
+				GLuint fragmentShader = CreateShader(GL_FRAGMENT_SHADER, "fragmentShader.frag");
+
+				//Attach compiled shaders to a program
+				glAttachShader(program, vertexShader);
+				glAttachShader(program, fragmentShader);
+
+				//Try Linking attached shaders
+				glLinkProgram(program);
+
+				glDetachShader(program, vertexShader);
+				glDetachShader(program, fragmentShader);
+
+
+				//Delete shaders
+				glDeleteShader(vertexShader);
+				glDeleteShader(fragmentShader);
+
+				//Get the error
+				GLint iv;
+				int InfoLogLength;
+				glGetProgramiv(program, GL_LINK_STATUS, &iv);
+				glGetProgramiv(program, GL_INFO_LOG_LENGTH, &InfoLogLength);
+				if (iv != GL_TRUE) {
+								std::vector<char> message(InfoLogLength + 1);
+								glGetProgramInfoLog(program, InfoLogLength, nullptr, &message[0]);
+								DEBUG_PRINT("Error message = %s\n", &message[0]);
+								DEBUG_PRINT("Failed to link program!!");
+				}
+
+				glGenVertexArrays(1, &VAO);
+				glBindVertexArray(VAO);
+
+				GLuint buffer;
+				GLfloat bufferData[] = {
+																												//RIGHT TRIANGLE
+																												-0.5f, 0.5f,0, //Top left vertex
+																													0.5f, 0.5f,0,	//Top right vertex
+																													0.5f,-0.5f,0, //Bottom right vertex
+																													//
+
+																													//LEFT TRIANGLE
+																													0.5f,-0.5f,0,
+																													-0.5f,-0.5f,0,
+																													-0.5f,0.5f,0,
+
+
+																													//RIGHT TRIANGLE
+																												 0,1, //Top left texture coordinate
+																													1,1,  //Top right
+																													1,0, //Bottom right
+
+																													//LEFT TRIANGLE
+																													1,0,
+																													0,0,
+																													0,1,
+
+																												//Color data
+																													1, 1, 1, 1, //Red
+																													1, 1, 1, 1, //Green
+																													1, 1, 1, 1, //Blue
+																													1, 1, 1, 1,
+
+																														1, 1, 1, 1, //Red
+																													1, 1, 1, 1, //Green
+																													1, 1, 1, 1, //Blue
+																													1, 1, 1, 1
+
+																																}; //3
+				//create opengl buffer object
+				glGenBuffers(1, &buffer);
+				//bind buffer object we generated to the GL_ARRAY_BUFFER target!
+				glBindBuffer(GL_ARRAY_BUFFER, buffer);
+				//allocate memory for buffer data in GPU
+				glBufferData(GL_ARRAY_BUFFER, sizeof(bufferData), bufferData, GL_STATIC_DRAW);
+
+				glEnableVertexAttribArray(0); //Vertex
+				glVertexAttribPointer(0, 3/*x,y,z*/, GL_FLOAT, GL_FALSE, 0, (void*)0);
+				glEnableVertexAttribArray(1); //color
+				glVertexAttribPointer(1, 4/*rgba*/, GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[30]));
+
+				glEnableVertexAttribArray(2); // Texture coordinate
+				glVertexAttribPointer(2, 2,/*u,v*/GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[18]));
+
+				glBindVertexArray(0);
+				glDisableVertexAttribArray(0);
+				glDisableVertexAttribArray(1);
+				glDisableVertexAttribArray(2);
+				glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+				GLuint location = glGetUniformLocation(program, "texturing");
+				glUseProgram(program);
+				glUniform1i(location, 1);
+				glUseProgram(0);
+
+				//texture loading using SOIL
+				GLuint textureID = SOIL_load_OGL_texture("Slime.png", 
+																																												 SOIL_LOAD_RGBA, 
+																																												 SOIL_CREATE_NEW_ID, 
+																																													SOIL_FLAG_POWER_OF_TWO|SOIL_FLAG_INVERT_Y);
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, textureID);
+
+				uniformLocations[0] = glGetUniformLocation(program, "posOffset");
+				uniformLocations[1] = glGetUniformLocation(program, "sizeOffset");
+
+		/*		GLuint circleVAO;
+				glGenVertexArrays(1, &circleVAO);
+				glBindVertexArray(circleVAO);
+
+				GLuint circleBufferObject;
+				glGenBuffers(1, &circleBufferObject);
+				glBindBuffer(GL_VERTEX_ARRAY, circleBufferObject);
+				glBufferData(GL_VERTEX_ARRAY, sizeof(float[38*3], g_circleVertexBuffer, GL_STATIC_DRAW));
+
+				glEnableVertexAttribArray(0);
+				glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,(void*)0);
+
+				glBindVertexArray(0);
+				glBindBuffer(GL_VERTEX_ARRAY, 0);
+				glDisableVertexAttribArray(0);
+
+				glBindVertexArray(circleVAO);*/
+}
+
+
+SWE::Graphics::~Graphics()
+{
+				glBindVertexArray(0);
+				glDeleteProgram(program);
+}
+
+
 //void SWE::Graphics::CreateCircleVertexBuffer()
 //{
 //				const int LevelOfDetail = 36; // one vertex per 10 degree
@@ -90,7 +223,7 @@ GLuint CreateShader(GLenum Shadertype, const char * fileName)
 
 
 
-void SWE::Graphics::Initialize(void)
+/*void SWE::Graphics::Initialize(void)
 {
 				//glFunctions ..
 				DEBUG_ASSERT(glewInit() != GLEW_OK, "Initializing GLW is failed\n");
@@ -137,27 +270,39 @@ void SWE::Graphics::Initialize(void)
 
 				GLuint buffer;
 				GLfloat bufferData[] = {
+																												//RIGHT TRIANGLE
 																												-1, 1,0, //Top left vertex
 																													1, 1,0,	//Top right vertex
 																													1,-1,0, //Bottom right vertex
 																													//
 
+																													//LEFT TRIANGLE
+																													1,-1,0,
+																													-1,-1,0,
+																													-1,1,0,
+
+
+																													//RIGHT TRIANGLE
 																												 0,1, //Top left texture coordinate
 																													1,1,  //Top right
 																													1,0, //Bottom right
-																													//9+6 = 15
 
-																													0,   0,   0,  //0
-																												 0,   0.5f,0, //1
-																													0.5f,0,   0, //2
-																													0,  -0.5f,0, //4
-																													//27
+																													//LEFT TRIANGLE
+																													1,0,
+																													0,0,
+																													0,1,
+
 																												//Color data
-																													1, 0, 0, 1, //Red
-																													0, 1, 0, 1, //Green
-																													0, 0, 1, 1, //Blue
-																													1, 0, 0, 1
-																													//27+16
+																													1, 1, 1, 1, //Red
+																													1, 1, 1, 1, //Green
+																													1, 1, 1, 1, //Blue
+																													1, 1, 1, 1,
+
+																														1, 1, 1, 1, //Red
+																													1, 1, 1, 1, //Green
+																													1, 1, 1, 1, //Blue
+																													1, 1, 1, 1
+
 																																}; //3
 				//create opengl buffer object
 				glGenBuffers(1, &buffer);
@@ -167,12 +312,12 @@ void SWE::Graphics::Initialize(void)
 				glBufferData(GL_ARRAY_BUFFER, sizeof(bufferData), bufferData, GL_STATIC_DRAW);
 
 				glEnableVertexAttribArray(0); //Vertex
-				glVertexAttribPointer(0, 3/*x,y,z*/, GL_FLOAT, GL_FALSE, 0, (void*)0);
+				glVertexAttribPointer(0, 3/*x,y,z, GL_FLOAT, GL_FALSE, 0, (void*)0);
 				glEnableVertexAttribArray(1); //color
-				glVertexAttribPointer(1, 4/*rgba*/, GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[27]));
+				glVertexAttribPointer(1, 4/*rgba, GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[30]));
 
 				glEnableVertexAttribArray(2); // Texture coordinate
-				glVertexAttribPointer(2, 2,/*u,v*/GL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[9]));
+				glVertexAttribPointer(2, 2,/*u,vGL_FLOAT, GL_FALSE, 0, (void*)sizeof(float[18]));
 
 				glBindVertexArray(0);
 				glDisableVertexAttribArray(0);
@@ -212,9 +357,10 @@ void SWE::Graphics::Initialize(void)
 				glBindBuffer(GL_VERTEX_ARRAY, 0);
 				glDisableVertexAttribArray(0);
 
-				glBindVertexArray(circleVAO);*/
+				glBindVertexArray(circleVAO);
 
 }
+*/
 
 void SWE::Graphics::Update(float /*dt*/)
 {
@@ -232,13 +378,15 @@ void SWE::Graphics::Update(float /*dt*/)
 												it->pTransform->GetPosition().x,
 												it->pTransform->GetPosition().y);
 								//Todo: apply aspect ratio
-								glUniform2f(uniformLocations[1], it->Size.x / 600, it->Size.y / 600);
+								glUniform2f(uniformLocations[1],
+												it->Size.x * 2 / Application::instance()->screenWidth,
+												it->Size.y *2 / Application::instance()->screenHeight);
 								//Drawing vertex arrays
 								//1 param = how to draw the vertices
 								//2							=
 
 
-								glDrawArrays(GL_TRIANGLES, 0, 3);
+								glDrawArrays(GL_TRIANGLES, 0, 6);
 				}
 			
 

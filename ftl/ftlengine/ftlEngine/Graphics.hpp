@@ -18,7 +18,7 @@ namespace SWE {
         }
 								~Graphics();
 																//Initialize the system
-								void Initialize(void) override;
+							//	void Initialize(void) override;
 
 							//All systems are updated every frame
 								void Update(float dt) override;

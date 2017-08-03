@@ -12,7 +12,7 @@ namespace SWE {
 				{
 				public:
 								//Initialize the system
-								virtual void Initialize(void) {};
+						//		virtual void Initialize(void) {};
 
 							//All systems are updated every frame
 								virtual void Update(float dt) = 0;

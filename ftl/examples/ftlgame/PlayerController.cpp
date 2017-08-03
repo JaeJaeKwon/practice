@@ -35,7 +35,7 @@ void PlayerController::Update(float dt)
 				}
 			//		pTransform->SetPosition(pos);
 
-					std::cout << pTransform->GetPosition().x << ", " << pTransform->GetPosition().y << "\n";
+				//	std::cout << pTransform->GetPosition().x << ", " << pTransform->GetPosition().y << "\n";
 }
 
 void PlayerController::Movement(float dt)

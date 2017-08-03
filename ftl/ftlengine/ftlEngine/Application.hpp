@@ -21,7 +21,7 @@ namespace SWE {
 
 								~Application();
 
-								void Initialize() override;
+							//	void Initialize() override;
 								void Update(float dt) override;
 								void SwapWindow();
 
@@ -30,6 +30,8 @@ namespace SWE {
 								//Window size
 								//Get and Set Window size
 								//Fullscreen
+								int screenWidth;
+								int screenHeight;
 
 
 				private:
@@ -42,8 +44,6 @@ namespace SWE {
 								void PollMouseEvent(SDL_Event& currEvent);
 
 
-								int screenWidth;
-								int screenHeight;
 								SDL_Event event;					//Events frome the OS
 								SDL_Window* pWindow; //window data
 
